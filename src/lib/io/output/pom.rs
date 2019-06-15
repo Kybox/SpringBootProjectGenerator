@@ -1,4 +1,4 @@
-use crate::lib::file::global::*;
+use crate::lib::io::global::*;
 use std::env;
 use std::fs::File;
 use std::io::Write;

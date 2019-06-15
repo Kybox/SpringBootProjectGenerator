@@ -1,4 +1,5 @@
 use regex::Regex;
+use colored::*;
 
 pub fn string_filter(value: String) -> String {
 
@@ -15,12 +16,15 @@ pub fn packaging_filter(value: String) -> bool {
         _ => false,
     };
 
-    if result == false { println!("/!\\ Wrong packaging /!\\ Choose jar or war"); }
+    if result == false {
+        println!("{}", "!! Wrong packaging !!".red().bold());
+        println!("{}", "-> Choose jar or war".green().italic());
+    }
 
     return result;
 }
 
-pub fn remove_trailing_newline(mut value: String) -> String {
+pub fn remove_trailing_newline(value: &mut String) -> &String {
 
     value.truncate(value.trim_end_matches(&['\r', '\n'][..]).len());
 
