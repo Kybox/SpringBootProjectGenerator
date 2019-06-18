@@ -16,21 +16,32 @@
     <name>#name</name>
     <description>#desc</description>
     <packaging>#packaging</packaging>
-
     <properties>
         <java.version>#java</java.version>
     </properties>
-
     <dependencies>
+
+        <!-- Spring boot starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
+
+        <!-- Spring boot starter test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        #spring-ws
+
+        #h2db
+
+        #spring-data-rest
+
+        #spring-data-jpa
+
     </dependencies>
 
     <build>
@@ -39,6 +50,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            #maven-jaxb2-plugin
+
         </plugins>
     </build>
 </project>

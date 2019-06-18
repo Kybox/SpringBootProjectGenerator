@@ -4,6 +4,12 @@ extern crate inflector;
 #[macro_use]
 extern crate include_dir;
 use include_dir::Dir;
+use crate::lib::steps::project::get_basic_infos;
+use crate::lib::steps::template::get_template;
+use crate::lib::steps::pom::*;
+use crate::lib::steps::folder::create_directories;
+use crate::lib::steps::class::{create_classes};
+
 pub const PROJECT_DIR: Dir = include_dir!("resources");
 
 mod lib;
@@ -23,12 +29,39 @@ fn main() {
     lib::banner::display_banner();
     lib::banner::display_header();
 
-    let infos = lib::io::input::keyboard::get_infos();
-    let app_data = lib::io::output::pom::create_pom_file(infos);
+    test();
+
+    // Get basic project infos
+    let infos = get_basic_infos();
+    let group_id = infos.get(0).unwrap();
+    let artifact_id = infos.get(1).unwrap();
+
+    // Get template list
+    let template = get_template();
+
+    // Create pom file
+    create_pom_file(&infos, &template);
+
+    // Create directories
+    create_directories(group_id, &template);
+
+    // Create classes
+    create_classes(group_id, artifact_id, &template);
+
+    /*
+    let dependency_map = lib::io::input::dependency::get_dependencies();
+
+    let app_data = lib::io::output::pom::create_pom_file(&infos, &dependency_map);
 
     let group_id = app_data.get(0).unwrap();
     let artifact_id = app_data.get(1).unwrap();
 
     lib::io::output::folder::create_directories(group_id);
     lib::io::output::class::create_main_class(group_id, artifact_id);
+    */
+}
+fn test() {
+
+
+
 }

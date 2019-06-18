@@ -1,0 +1,96 @@
+<!-- Generate classes -->
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.14.0</version>
+                <configuration>
+
+                    <!-- XSD source directory -->
+                    <schemaDirectory>src/main/resources/xsd</schemaDirectory>
+
+                    <!-- Base generated classes directory -->
+                    <generateDirectory>src/main/java</generateDirectory>
+
+                    <!-- Don't clear package ! -->
+                    <cleanPackageDirectories>false</cleanPackageDirectories>
+
+                    <!-- Provides additional customizations that are not defined by the JAXB specification -->
+                    <extension>true</extension>
+
+                    <!-- Options -->
+                    <noFileHeader>true</noFileHeader>
+                    <locale>us</locale>
+                    <encoding>utf-8</encoding>
+
+                    <!-- Arguments -->
+                    <args>
+
+                        <!-- Generate custom annotations from XSD files -->
+                        <arg>-Xannotate</arg>
+
+                        <!-- Remove default annotation -->
+                        <arg>-XremoveAnnotation</arg>
+
+                        <!-- Add a builder -->
+                        <arg>-Xfluent-api</arg>
+
+                        <!-- Add toString method -->
+                        <!--<arg>-XtoString</arg>-->
+
+                        <!-- Add no args and all parameters constructors -->
+                        <arg>-Xvalue-constructor</arg>
+
+                        <!--
+                            Suppresses the generation of package level annotations
+                            into **/package-info.java.
+                        -->
+                        <arg>-npa</arg>
+                    </args>
+
+                    <!-- Dependencies to generate classes -->
+                    <plugins>
+
+                        <!-- Jaxb2 basics -->
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics</artifactId>
+                            <version>1.11.1</version>
+                        </plugin>
+
+                        <!-- Annotation -->
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics-annotate</artifactId>
+                            <version>1.1.0</version>
+                        </plugin>
+
+                        <!-- Fluent API (builder) -->
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-fluent-api</artifactId>
+                            <version>3.0</version>
+                        </plugin>
+
+                        <!-- Constructor -->
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-value-constructor</artifactId>
+                            <version>3.0</version>
+                        </plugin>
+
+                        <!-- JPA -->
+                        <plugin>
+                            <groupId>javax.persistence</groupId>
+                            <artifactId>javax.persistence-api</artifactId>
+                            <version>${javax-persistence.version}</version>
+                        </plugin>
+
+                        <!-- Java Bean Validation API -->
+                        <plugin>
+                            <groupId>javax.validation</groupId>
+                            <artifactId>validation-api</artifactId>
+                            <version>${javax-validation.version}</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+            </plugin>

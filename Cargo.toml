@@ -10,6 +10,7 @@ regex = "1"
 include_dir = "0.2.1"
 colored = "1.8"
 winapi = "0.3.7"
+dialoguer = "0.4.0"
 
 [dependencies.Inflector]
 version = "*"
