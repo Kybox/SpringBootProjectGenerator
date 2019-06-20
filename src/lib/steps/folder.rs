@@ -28,7 +28,7 @@ pub fn create_directories(group_id: &String, template: &String) {
 
         user_package.push("config");
         create_dir_all(&user_package).expect("Error while create dir");
-        println!("[CREATE CONFIG] {} -> Ok", &user_package.display());
+        println!("[CREATE] {} -> Ok", &user_package.display());
     }
 
     let mut test_path = current_dir().expect("Error");

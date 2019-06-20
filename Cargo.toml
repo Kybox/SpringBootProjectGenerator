@@ -3,14 +3,27 @@ name = "sbpg"
 version = "0.1.0"
 authors = ["Kybox - Yann <nslr@riseup.net>"]
 edition = "2018"
+build = "build.rs"
+
+[package.metadata.winres]
+OriginalFilename = "sbpg.exe"
+FileDescription = "Easily and quickly generate projects based on the Spring Boot framework."
+LegalCopyright = "GNU General Public License v3.0"
+ProductName = "Spring Boot Project Generator"
+ProductVersion = "0.1.0"
 
 [dependencies]
-dirs = "1.0"
+dirs = "2.0.1"
 regex = "1"
 include_dir = "0.2.1"
 colored = "1.8"
 winapi = "0.3.7"
 dialoguer = "0.4.0"
+winreg = "0.6.0"
+os_info = "1.1.1"
+
+[build-dependencies]
+winres = "0.1"
 
 [dependencies.Inflector]
 version = "*"

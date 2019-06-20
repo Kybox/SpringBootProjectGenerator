@@ -3,12 +3,18 @@ extern crate inflector;
 
 #[macro_use]
 extern crate include_dir;
+
 use include_dir::Dir;
 use crate::lib::steps::project::get_basic_infos;
 use crate::lib::steps::template::get_template;
 use crate::lib::steps::pom::*;
 use crate::lib::steps::folder::create_directories;
 use crate::lib::steps::class::{create_classes};
+use crate::lib::steps::exit::exit_generator;
+use crate::lib::steps::properties::create_properties_file;
+use crate::lib::steps::install::{check_install, install};
+use crate::lib::banner::display_install_info;
+use crate::lib::steps::version::check_os_version;
 
 pub const PROJECT_DIR: Dir = include_dir!("resources");
 
@@ -26,10 +32,22 @@ fn main() {
     // Clear screen
     print!("{}[2J", 27 as char);
 
-    lib::banner::display_banner();
-    lib::banner::display_header();
-
     test();
+    // Display banner
+    lib::banner::display_banner();
+
+    // Check OS Version
+    check_os_version();
+
+    // Check install
+    if !check_install() {
+
+        display_install_info();
+        install();
+    }
+
+
+    lib::banner::display_header();
 
     // Get basic project infos
     let infos = get_basic_infos();
@@ -48,20 +66,13 @@ fn main() {
     // Create classes
     create_classes(group_id, artifact_id, &template);
 
-    /*
-    let dependency_map = lib::io::input::dependency::get_dependencies();
+    // Create the properties file
+    create_properties_file(&template);
 
-    let app_data = lib::io::output::pom::create_pom_file(&infos, &dependency_map);
-
-    let group_id = app_data.get(0).unwrap();
-    let artifact_id = app_data.get(1).unwrap();
-
-    lib::io::output::folder::create_directories(group_id);
-    lib::io::output::class::create_main_class(group_id, artifact_id);
-    */
+    exit_generator();
 }
-fn test() {
 
+fn test() {
 
 
 }

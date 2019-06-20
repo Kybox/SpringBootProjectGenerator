@@ -1,0 +1,5 @@
+# SERVER PORT
+server.port = 8080
+
+#h2db
+

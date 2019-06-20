@@ -1,5 +1,5 @@
  .----------------------------------------------------------.
- |  Warning ! The generated project will be in this path :  |
+ |  Warning ! The project will be generated in this path :  |
  '----------------------------------------------------------'
    -> #path
 

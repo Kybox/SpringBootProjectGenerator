@@ -3,3 +3,8 @@ pub mod template;
 pub mod pom;
 pub mod folder;
 pub mod class;
+pub mod properties;
+pub mod exit;
+pub mod install;
+pub mod error;
+pub mod version;

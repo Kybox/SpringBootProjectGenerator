@@ -1,0 +1,15 @@
+Installation of Spring Boot Project Generator.
+It will take less than 1 second ;)
+
+You can then start the application without having to launch
+the executable file, just by entering the keyword "sbpg"
+in your terminal.
+
+Installation steps :
+--------------------
+-> Copy executable file to the AppData folder
+-> Add a new environment variable to the PATH
+-> Reload the Explorer process to broadcast the variable
+
+Press the ENTER key to start the installation process,
+otherwise please close this window.
